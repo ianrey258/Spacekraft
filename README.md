@@ -7,6 +7,7 @@ A new Flutter project.
 This project is a starting point for a Flutter application.
 
 NOT DONE YET 
+
 no Sprite,no Image,no Soundeffects,cannot change spaceShip,no upgrades
 
 APK here
