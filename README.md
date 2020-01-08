@@ -1,6 +1,6 @@
 # spacekraft
 
-A new Flutter project.
+its a Flutter game project using Flame Engine.
 
 ## Getting Started
 
