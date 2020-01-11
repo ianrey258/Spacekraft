@@ -135,6 +135,7 @@ void init() async {
 
   Widget form(BuildContext context){
     return SingleChildScrollView(
+      controller: _scrollController,
         child: Column(
           children: <Widget>[
             Container(
@@ -217,7 +218,7 @@ void init() async {
                         controller: username,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(labelText: 'Username'),
-                        validator: (val) => !access ? 'Invalid Username' : null,
+                        validator: (val) => val.length==0 ? 'Invalid Username' : null,
                       ),
                     ),
                     Padding(
@@ -226,7 +227,7 @@ void init() async {
                         controller: password,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(labelText: 'Password'),
-                        validator: (val) => !access ? 'Invalid Password' : null,
+                        validator: (val) => val.length<6 ? 'Invalid Password' : null,
                       ),
                     ),
                     Row(
@@ -412,8 +413,8 @@ void init() async {
     }
   }
   validateReg() async{
-    await _dbRequest.saveAccount(username.text,password.text);
     if(formKey.currentState.validate()){
+      await _dbRequest.saveAccount(username.text,password.text);
       formKey.currentState.save();
       cleartxt();
       Navigator.popAndPushNamed(context, '/');
